@@ -53,6 +53,11 @@ logger = logging.getLogger(__name__)
     help="Pass additional arguments to csmock",
     default=None,
 )
+@click.option(
+    "--osh-cli-args",
+    help="Pass additional options to osh-cli in the format --option ",
+    default=None,
+)
 @click.argument("path_or_url", type=LocalProjectParameter(), default=os.path.curdir)
 def scan_in_osh(
     config,
@@ -62,6 +67,7 @@ def scan_in_osh(
     base_srpm,
     comment,
     csmock_args,
+    osh_cli_args
 ):
     """
     Perform a scan through OpenScanHub.
@@ -83,6 +89,7 @@ def scan_in_osh(
         base_srpm=base_srpm,
         comment=comment,
         csmock_args=csmock_args,
+        osh_cli_args = osh_cli_args
     )
 
     if cmd_result_stdout:

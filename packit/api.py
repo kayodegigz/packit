@@ -2313,6 +2313,7 @@ The first dist-git commit to be synced is '{short_hash}'.
         base_srpm: Optional[Path] = None,
         comment: Optional[str] = "Submitted through Packit.",
         csmock_args: Optional[str] = None,
+        osh_cli_args: Optional[str] = None
     ) -> str:
         """
         Perform a build through OpenScanHub.
@@ -2342,6 +2343,10 @@ The first dist-git commit to be synced is '{short_hash}'.
 
         if csmock_args:
             cmd.append("--csmock-args=" + shlex.quote(csmock_args))
+
+        if osh_cli_args:
+            cmd.append(shlex.split(osh_cli_args))
+            print(cmd)
 
         cmd.append("--config=" + str(chroot))
         cmd.append("--nowait")
