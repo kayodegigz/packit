@@ -2343,6 +2343,7 @@ The first dist-git commit to be synced is '{short_hash}'.
 
         if csmock_args:
             cmd.append("--csmock-args=" + shlex.quote(csmock_args))
+            print(cmd)
 
         if osh_cli_args:
             cmd.append(shlex.quote(osh_cli_args))
