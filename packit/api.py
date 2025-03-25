@@ -2346,7 +2346,8 @@ The first dist-git commit to be synced is '{short_hash}'.
             print(cmd)
 
         if osh_cli_args:
-            cmd.append(shlex.quote(osh_cli_args))
+            split = shlex.split(osh_cli_args)
+            cmd.append(" ".join(split))
             print(cmd)
 
         cmd.append("--config=" + str(chroot))
