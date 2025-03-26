@@ -55,7 +55,7 @@ logger = logging.getLogger(__name__)
 )
 @click.option(
     "--osh-cli-args",
-    help="Pass additional options to osh-cli in the format --option ",
+    help="Pass additional options to osh-cli in the format --option=value",
     default=None,
 )
 @click.argument("path_or_url", type=LocalProjectParameter(), default=os.path.curdir)
