@@ -2343,21 +2343,16 @@ The first dist-git commit to be synced is '{short_hash}'.
 
         if csmock_args:
             cmd.append("--csmock-args=" + shlex.quote(csmock_args))
-            print(cmd)
 
+        #TODO: handle options with json flags(eg --metadata)
         if osh_cli_args:
-            strrr = shlex.split(osh_cli_args)
-            cmd = cmd + strrr
-            print("printing new cmd")
-            print(cmd)
+            split_str = shlex.split(osh_cli_args)
+            cmd = cmd + split_str
 
         cmd.append("--config=" + str(chroot))
         cmd.append("--nowait")
         cmd.append("--json")
         cmd.append("--comment=" + comment)
-
-        print(cmd)
-        print(osh_cli_args)
 
         try:
             cmd_result = commands.run_command(cmd, output=True)
