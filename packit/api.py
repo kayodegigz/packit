@@ -2354,6 +2354,9 @@ The first dist-git commit to be synced is '{short_hash}'.
         cmd.append("--json")
         cmd.append("--comment=" + comment)
 
+        print(cmd)
+        print(osh_cli_args)
+
         try:
             cmd_result = commands.run_command(cmd, output=True)
         except PackitCommandFailedError as ex:
