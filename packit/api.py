@@ -2313,7 +2313,7 @@ The first dist-git commit to be synced is '{short_hash}'.
         base_srpm: Optional[Path] = None,
         comment: Optional[str] = "Submitted through Packit.",
         csmock_args: Optional[str] = None,
-        osh_cli_args: Optional[str] = None
+        osh_cli_args: Optional[str] = None,
     ) -> str:
         """
         Perform a build through OpenScanHub.
@@ -2347,7 +2347,7 @@ The first dist-git commit to be synced is '{short_hash}'.
         if osh_cli_args is None:
             osh_cli_args = self.package_config.osh_cli_args
 
-        #TODO: handle options with json values(eg --metadata)
+        # TODO: handle options with json flags(eg --metadata)
         if osh_cli_args:
             split_str = shlex.split(osh_cli_args)
             cmd = cmd + split_str

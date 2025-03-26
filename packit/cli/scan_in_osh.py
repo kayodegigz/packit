@@ -67,7 +67,7 @@ def scan_in_osh(
     base_srpm,
     comment,
     csmock_args,
-    osh_cli_args
+    osh_cli_args,
 ):
     """
     Perform a scan through OpenScanHub.
@@ -89,7 +89,7 @@ def scan_in_osh(
         base_srpm=base_srpm,
         comment=comment,
         csmock_args=csmock_args,
-        osh_cli_args = osh_cli_args
+        osh_cli_args=osh_cli_args,
     )
 
     if cmd_result_stdout:
