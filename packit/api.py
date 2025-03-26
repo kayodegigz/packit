@@ -2345,7 +2345,7 @@ The first dist-git commit to be synced is '{short_hash}'.
             cmd.append("--csmock-args=" + shlex.quote(csmock_args))
 
         if osh_cli_args is None:
-            print("no osh_cli_args passed... going into config file to check")
+            logger.info("No osh_cli_args passed, going into config file to check...")
             osh_cli_args = self.package_config.osh_cli_args
 
         # TODO: handle options with json flags(eg --metadata)
