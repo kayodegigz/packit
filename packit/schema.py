@@ -510,7 +510,7 @@ class CommonConfigSchema(Schema):
     osh_diff_scan_after_copr_build = fields.Boolean(missing=True)
 
     csmock_args = fields.String(missing=None)
-    osh_options = fields.List(fields.String(), missing=None)
+    osh_options = fields.Dict(keys=fields.String(), missing=None)
 
     use_target_repo_for_fmf_url = fields.Boolean(missing=False)
 
