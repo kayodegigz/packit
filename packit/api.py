@@ -30,6 +30,7 @@ from typing import (
 import bugzilla
 import click
 import git
+import yaml
 from git.exc import GitCommandError
 from ogr.abstract import PullRequest
 from ogr.exceptions import PagureAPIException
@@ -99,8 +100,6 @@ from packit.utils.repo import (
 )
 from packit.utils.versions import compare_versions
 from packit.vm_image_build import ImageBuilder
-
-import yaml
 
 logger = logging.getLogger(__name__)
 
@@ -2331,8 +2330,7 @@ The first dist-git commit to be synced is '{short_hash}'.
                 release_suffix=release_suffix,
             )
 
-
-        with open("packit.yaml", "r") as f:
+        with open("packit.yaml") as f:
             data = yaml.safe_load(f)
 
         print("printing yaml file out")
