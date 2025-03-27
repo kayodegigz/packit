@@ -100,6 +100,8 @@ from packit.utils.repo import (
 from packit.utils.versions import compare_versions
 from packit.vm_image_build import ImageBuilder
 
+import yaml
+
 logger = logging.getLogger(__name__)
 
 git.Git.GIT_PYTHON_TRACE = "full"
@@ -2328,6 +2330,13 @@ The first dist-git commit to be synced is '{short_hash}'.
                 srpm_dir=self.up.local_project.working_dir,
                 release_suffix=release_suffix,
             )
+
+
+        with open("packit.yaml", "r") as f:
+            data = yaml.safe_load(f)
+
+        print("printing yaml file out")
+        print(data)
 
         if base_srpm:
             cmd = [
