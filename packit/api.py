@@ -2345,7 +2345,7 @@ The first dist-git commit to be synced is '{short_hash}'.
         if csmock_args:
             cmd.append("--csmock-args=" + shlex.quote(csmock_args))
 
-        osh_options = self.package_config.srpm_build_deps
+        osh_options = self.package_config.osh_options
 
         print(osh_options)
 
