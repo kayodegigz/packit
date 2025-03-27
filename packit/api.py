@@ -2355,7 +2355,7 @@ The first dist-git commit to be synced is '{short_hash}'.
         # if profile is None:
         #     profile = self.package_config.profile
 
-        if analyzer:
+        if profile:
             cmd.append("--profile=" + shlex.quote(profile))
 
         cmd.append("--config=" + str(chroot))
