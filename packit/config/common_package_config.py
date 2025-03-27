@@ -260,7 +260,7 @@ class CommonPackageConfig:
         osh_diff_scan_after_copr_build: Optional[bool] = True,
         csmock_args: Optional[str] = None,
         use_target_repo_for_fmf_url: Optional[bool] = False,
-        osh_options: Optional[dict] = None,
+        osh_options: Optional[str] = None,
     ):
         self.config_file_path: Optional[str] = config_file_path
         self.specfile_path: Optional[str] = specfile_path
