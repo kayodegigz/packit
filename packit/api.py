@@ -2313,7 +2313,8 @@ The first dist-git commit to be synced is '{short_hash}'.
         base_srpm: Optional[Path] = None,
         comment: Optional[str] = "Submitted through Packit.",
         csmock_args: Optional[str] = None,
-        osh_cli_args: Optional[str] = None,
+        analyzer: Optional[str] = None,
+        profile: Optional[str] = None,
     ) -> str:
         """
         Perform a build through OpenScanHub.
@@ -2344,14 +2345,18 @@ The first dist-git commit to be synced is '{short_hash}'.
         if csmock_args:
             cmd.append("--csmock-args=" + shlex.quote(csmock_args))
 
-        if osh_cli_args is None:
-            logger.info("No osh_cli_args passed, going into config file to check...")
-            osh_cli_args = self.package_config.osh_cli_args
+        # are we going to allow profile and analyzer to be passed in config file?
+        # if analyzer is None:
+        #     analyzer = self.package_config.analyzer
 
-        # TODO: handle options with json flags(eg --metadata)
-        if osh_cli_args:
-            split_str = shlex.split(osh_cli_args)
-            cmd = cmd + split_str
+        if analyzer:
+            cmd.append("--analyzer=" + shlex.quote(analyzer))
+
+        # if profile is None:
+        #     profile = self.package_config.profile
+
+        if analyzer:
+            cmd.append("--profile=" + shlex.quote(profile))
 
         cmd.append("--config=" + str(chroot))
         cmd.append("--nowait")
