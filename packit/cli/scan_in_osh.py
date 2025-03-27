@@ -96,7 +96,7 @@ def scan_in_osh(
         comment=comment,
         csmock_args=csmock_args,
         analyzer=analyzer,
-        profile=profile
+        profile=profile,
     )
 
     if cmd_result_stdout:
