@@ -87,6 +87,7 @@ def scan_in_osh(
         local_project=path_or_url,
     )
 
+
     if base_srpm:
         logger.debug(f"Base SRPM: {base_srpm}")
 

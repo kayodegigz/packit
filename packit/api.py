@@ -2345,18 +2345,9 @@ The first dist-git commit to be synced is '{short_hash}'.
         if csmock_args:
             cmd.append("--csmock-args=" + shlex.quote(csmock_args))
 
-        # are we going to allow profile and analyzer to be passed in config file?
-        # if analyzer is None:
-        #     analyzer = self.package_config.analyzer
+        osh_options = self.package_config.osh_options
 
-        if analyzer:
-            cmd.append("--analyzer=" + shlex.quote(analyzer))
-
-        # if profile is None:
-        #     profile = self.package_config.profile
-
-        if profile:
-            cmd.append("--profile=" + shlex.quote(profile))
+        print(osh_options)
 
         cmd.append("--config=" + str(chroot))
         cmd.append("--nowait")
