@@ -2349,9 +2349,6 @@ The first dist-git commit to be synced is '{short_hash}'.
 
         osh_options = self.package_config.osh_options
 
-        print(f"printing osh options: {osh_options}")
-        print(f"Full package_config: {self.package_config.__dict__}")
-
         if osh_options is not None:
             analyzer = osh_options.get("analyzer")
             config = osh_options.get("config")
