@@ -380,7 +380,6 @@ class CommonPackageConfig:
 
         self.csmock_args = csmock_args
         self.osh_options = osh_options
-        print("Loaded osh_options:", self.osh_options)
 
         self.use_target_repo_for_fmf_url = use_target_repo_for_fmf_url
 

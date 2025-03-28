@@ -72,8 +72,6 @@ def scan_in_osh(
     base_srpm,
     comment,
     csmock_args,
-    analyzer,
-    profile,
 ):
     """
     Perform a scan through OpenScanHub.
@@ -95,8 +93,6 @@ def scan_in_osh(
         base_srpm=base_srpm,
         comment=comment,
         csmock_args=csmock_args,
-        analyzer=analyzer,
-        profile=profile,
     )
 
     if cmd_result_stdout:

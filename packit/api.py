@@ -2313,14 +2313,16 @@ The first dist-git commit to be synced is '{short_hash}'.
         base_srpm: Optional[Path] = None,
         comment: Optional[str] = "Submitted through Packit.",
         csmock_args: Optional[str] = None,
-        analyzer: Optional[str] = None,
-        profile: Optional[str] = None,
     ) -> str:
         """
         Perform a build through OpenScanHub.
         """
         # `osh-cli` requires a kerberos ticket.
         self.init_kerberos_ticket()
+
+        analyzer = None
+        config = None
+        profile = None
 
         if not srpm_path:
             srpm_path = self.create_srpm(
@@ -2350,10 +2352,24 @@ The first dist-git commit to be synced is '{short_hash}'.
         print(f"printing osh options: {osh_options}")
         print(f"Full package_config: {self.package_config.__dict__}")
 
-        cmd.append("--config=" + str(chroot))
+        if osh_options is not None:
+            analyzer = osh_options.get("analyzer")
+            config = osh_options.get("config")
+            profile = osh_options.get("profile")
+
+        if analyzer:
+            cmd.append("--analyzer=" + shlex.quote(analyzer))
+        if profile:
+            cmd.append("--profile=" + shlex.quote(profile))
+
+        oshConfig = str(chroot) if config is None else shlex.quote(config)
+        
+        cmd.append("--config=" + oshConfig)
         cmd.append("--nowait")
         cmd.append("--json")
         cmd.append("--comment=" + comment)
+        
+        logger.info("Full command passed to osh-cli -> ", cmd)
 
         try:
             cmd_result = commands.run_command(cmd, output=True)
