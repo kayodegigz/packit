@@ -53,16 +53,6 @@ logger = logging.getLogger(__name__)
     help="Pass additional arguments to csmock",
     default=None,
 )
-@click.option(
-    "--analyzer",
-    help="Pass analyzer option to osh-cli",
-    default=None,
-)
-@click.option(
-    "--profile",
-    help="Pass scanning profile option to osh-cli",
-    default=None,
-)
 @click.argument("path_or_url", type=LocalProjectParameter(), default=os.path.curdir)
 def scan_in_osh(
     config,
