@@ -2363,12 +2363,12 @@ The first dist-git commit to be synced is '{short_hash}'.
             cmd.append("--profile=" + shlex.quote(profile))
 
         oshConfig = str(chroot) if config is None else shlex.quote(config)
-        
+
         cmd.append("--config=" + oshConfig)
         cmd.append("--nowait")
         cmd.append("--json")
         cmd.append("--comment=" + comment)
-        
+
         logger.info("Full command passed to osh-cli -> ", cmd)
 
         try:
