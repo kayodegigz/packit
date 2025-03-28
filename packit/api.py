@@ -2369,7 +2369,7 @@ The first dist-git commit to be synced is '{short_hash}'.
         cmd.append("--json")
         cmd.append("--comment=" + comment)
 
-        logger.info("Full command passed to osh-cli -> ", cmd)
+        logger.info(f"Full command passed to osh-cli -> {cmd}")
 
         try:
             cmd_result = commands.run_command(cmd, output=True)
