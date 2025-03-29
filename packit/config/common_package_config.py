@@ -79,7 +79,12 @@ class OshOptionsConfig:
     Configuration class for processing additional OpenScanHub (OSH) options.
     """
 
-    def __init__(self, analyzer: Optional[str] = None, config: Optional[str] = None, profile: Optional[str] = None):
+    def __init__(
+        self,
+        analyzer: Optional[str] = None,
+        config: Optional[str] = None,
+        profile: Optional[str] = None,
+    ):
         self.analyzer = analyzer
         self.config = config
         self.profile = profile

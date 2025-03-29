@@ -23,8 +23,8 @@ from packit.config import (
     CommonPackageConfig,
     Config,
     Deployment,
-    PackageConfig,
     OshOptionsConfig,
+    PackageConfig,
 )
 from packit.config.aliases import DEPRECATED_TARGET_MAP
 from packit.config.commands import TestCommandConfig
@@ -550,6 +550,7 @@ class OshOptionsSchema(Schema):
     """
     Schema for processing additional osh options
     """
+
     analyzer = fields.String(missing=None)
     config = fields.String(missing=None)
     profile = fields.String(missing=None)
@@ -557,6 +558,7 @@ class OshOptionsSchema(Schema):
     @post_load
     def make_instance(self, data, **_):
         return OshOptionsConfig(**data)
+
 
 class JobConfigSchema(Schema):
     """
