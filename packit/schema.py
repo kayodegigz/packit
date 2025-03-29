@@ -23,8 +23,8 @@ from packit.config import (
     CommonPackageConfig,
     Config,
     Deployment,
-    PackageConfig,
     OshOptionsConfig,
+    PackageConfig,
 )
 from packit.config.aliases import DEPRECATED_TARGET_MAP
 from packit.config.commands import TestCommandConfig

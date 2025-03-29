@@ -2356,14 +2356,13 @@ The first dist-git commit to be synced is '{short_hash}'.
 
         osh_config = str(chroot)
 
-        if (osh_options := self.package_config.osh_options.__dict__):
+        if osh_options := self.package_config.osh_options.__dict__:
             if analyzer := osh_options.get("analyzer"):
                 cmd.append("--analyzer=" + shlex.quote(analyzer))
             if profile := osh_options.get("profile"):
                 cmd.append("--profile=" + shlex.quote(profile))
             if config := osh_options.get("config"):
                 osh_config = shlex.quote(config)
-
 
         # if analyzer:
         #     cmd.append("--analyzer=" + shlex.quote(analyzer))
