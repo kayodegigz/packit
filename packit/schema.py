@@ -411,10 +411,12 @@ def validate_repo_name(value):
         raise ValidationError("Repository name must be a valid filename.")
     return True
 
+
 class OshOptionsSchema(Schema):
     """
     Schema for processing additional osh options
     """
+
     analyzer = fields.String(missing=None)
     config = fields.String(missing=None)
     profile = fields.String(missing=None)
@@ -422,6 +424,7 @@ class OshOptionsSchema(Schema):
     @post_load
     def make_instance(self, data, **_):
         return OshOptionsConfig(**data)
+
 
 class CommonConfigSchema(Schema):
     """
