@@ -411,6 +411,17 @@ def validate_repo_name(value):
         raise ValidationError("Repository name must be a valid filename.")
     return True
 
+class OshOptionsSchema(Schema):
+    """
+    Schema for processing additional osh options
+    """
+    analyzer = fields.String(missing=None)
+    config = fields.String(missing=None)
+    profile = fields.String(missing=None)
+
+    @post_load
+    def make_instance(self, data, **_):
+        return OshOptionsConfig(**data)
 
 class CommonConfigSchema(Schema):
     """
@@ -511,7 +522,7 @@ class CommonConfigSchema(Schema):
     osh_diff_scan_after_copr_build = fields.Boolean(missing=True)
 
     csmock_args = fields.String(missing=None)
-    osh_options = fields.Dict(keys=fields.String(), missing=None)
+    osh_options = fields.Nested(OshOptionsSchema)
 
     use_target_repo_for_fmf_url = fields.Boolean(missing=False)
 
@@ -545,18 +556,6 @@ class CommonConfigSchema(Schema):
     def make_instance(self, data, **_):
         return CommonPackageConfig(**data)
 
-
-class OshOptionsSchema(Schema):
-    """
-    Schema for processing additional osh options
-    """
-    analyzer = fields.String(missing=None)
-    config = fields.String(missing=None)
-    profile = fields.String(missing=None)
-
-    @post_load
-    def make_instance(self, data, **_):
-        return OshOptionsConfig(**data)
 
 class JobConfigSchema(Schema):
     """
