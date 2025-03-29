@@ -2347,21 +2347,32 @@ The first dist-git commit to be synced is '{short_hash}'.
         if csmock_args:
             cmd.append("--csmock-args=" + shlex.quote(csmock_args))
 
-        osh_options = self.package_config.osh_options
+        # osh_options = self.package_config.osh_options.__dict__
 
-        if osh_options is not None:
-            analyzer = osh_options.get("analyzer")
-            config = osh_options.get("config")
-            profile = osh_options.get("profile")
+        # if osh_options is not None:
+        #     analyzer = osh_options.get("analyzer")
+        #     config = osh_options.get("config")
+        #     profile = osh_options.get("profile")
 
-        if analyzer:
-            cmd.append("--analyzer=" + shlex.quote(analyzer))
-        if profile:
-            cmd.append("--profile=" + shlex.quote(profile))
+        osh_config = str(chroot)
 
-        oshConfig = str(chroot) if config is None else shlex.quote(config)
+        if (osh_options := self.package_config.osh_options.__dict__):
+            if analyzer := osh_options.get("analyzer"):
+                cmd.append("--analyzer=" + shlex.quote(analyzer))
+            if profile := osh_options.get("profile"):
+                cmd.append("--profile=" + shlex.quote(profile))
+            if config := osh_options.get("config"):
+                osh_config = shlex.quote(config)
 
-        cmd.append("--config=" + oshConfig)
+
+        # if analyzer:
+        #     cmd.append("--analyzer=" + shlex.quote(analyzer))
+        # if profile:
+        #     cmd.append("--profile=" + shlex.quote(profile))
+
+        # osh_config = str(chroot) if config is None else shlex.quote(config)
+
+        cmd.append("--config=" + osh_config)
         cmd.append("--nowait")
         cmd.append("--json")
         cmd.append("--comment=" + comment)
